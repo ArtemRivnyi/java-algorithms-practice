@@ -1,29 +1,47 @@
-# ⚙️ Arch.pc: Algorithms and Data Structures Labs
+# java-algorithms-practice: Algorithms and Data Structures Labs
 
 [![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)](https://www.java.com/)
 [![Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
 [![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white)](https://junit.org/junit5/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Arch.pc** is a collection of laboratory assignments focused on fundamental algorithms and data structures, implemented in Java. Each lab explores a specific concept, providing practical implementations and performance comparisons. This project is designed for students and developers aiming to deepen their understanding of algorithms and data structures.
+This repository is a collection of laboratory assignments focused on fundamental algorithms and data structures, implemented in Java. It serves as a practical demonstration of core computer science principles, with a strong emphasis on **performance analysis** and **efficient resource management**.
 
 ## 📝 Table of Contents
 
+*   [🎯 Relevance for Technical Support / DevOps](#-relevance-for-technical-support--devops)
 *   [✨ Features](#-features)
 *   [🛠️ Technologies Used](#️-technologies-used)
 *   [🚀 Quick Start](#-quick-start)
     *   [1️⃣ Clone the Repository](#1️⃣-clone-the-repository)
     *   [2️⃣ Build the Project](#2️⃣-build-the-project)
     *   [3️⃣ Run the Labs](#3️⃣-run-the-labs)
-*   [🔬 Lab Details](#-lab-details)
-    *   [Lab01Task: List Performance Comparison](#lab01task-list-performance-comparison)
-    *   [Lab02Sorting: Sorting Algorithms Performance Comparison](#lab02sorting-sorting-algorithms-performance-comparison)
-    *   [Lab03Recursion: Recursion and Iteration Examples](#lab03recursion-recursion-and-iteration-examples)
-    *   [Lab04BST: Binary Search Tree Implementation](#lab04bst-binary-search-tree-implementation)
-    *   [Lab05: Data Validation and Manipulation](#lab05-data-validation-and-manipulation)
+*   [🔬 Lab Details & Real-World Applications](#-lab-details--real-world-applications)
+    *   [Lab 1: List Performance Comparison (ArrayList vs LinkedList)](#lab-1-list-performance-comparison-arraylist-vs-linkedlist)
+    *   [Lab 2: Sorting Algorithms Performance Comparison](#lab-2-sorting-algorithms-performance-comparison)
+    *   [Lab 3: Recursion and Iteration Examples](#lab-3-recursion-and-iteration-examples)
+    *   [Lab 4: Binary Search Tree (BST) Implementation](#lab-4-binary-search-tree-bst-implementation)
+    *   [Lab 5: Data Validation and Manipulation](#lab-5-data-validation-and-manipulation)
 *   [🤝 Contributing](#-contributing)
 *   [📄 License](#-license)
 *   [🧰 Maintainer](#-maintainer)
+
+---
+
+## 🎯 Relevance for Technical Support / DevOps
+
+While this project focuses on core programming concepts, the skills demonstrated are highly relevant and transferable to a **Technical Support** or **DevOps** role, particularly in environments dealing with high-performance or enterprise Java applications.
+
+| Skill Demonstrated | Relevance to Technical Support / DevOps |
+| :--- | :--- |
+| **Performance Analysis (Labs 1 & 2)** | Ability to identify and troubleshoot performance bottlenecks in production systems. Understanding how data structure choice (`ArrayList` vs `LinkedList`) or algorithm selection (e.g., sorting) directly impacts system latency and resource consumption. |
+| **Problem Decomposition & Logic (All Labs)** | Capacity to break down complex technical issues into smaller, manageable components. Essential for root cause analysis (RCA) and debugging in complex distributed systems. |
+| **Resource Management (Lab 3: Recursion)** | Understanding the difference between iterative and recursive solutions, which is critical for managing stack memory and preventing stack overflow errors in application logs. |
+| **Data Structure Fundamentals (Lab 4: BST)** | Knowledge of how data is stored and retrieved efficiently. This underpins database indexing, caching mechanisms, and log parsing efficiency. |
+| **Data Validation & Regular Expressions (Lab 5)** | Practical skill in validating and manipulating data streams (e.g., log files, configuration files, user input). Regular expressions are a core tool for log analysis and monitoring. |
+| **Standard Tooling (Maven, JUnit)** | Proficiency with industry-standard build and testing tools, ensuring the ability to set up, build, and test application components in a CI/CD pipeline or staging environment. |
+
+---
 
 ## ✨ Features
 
@@ -49,8 +67,8 @@ To build and run these projects, follow these instructions:
 ### 1️⃣ Clone the Repository
 
 ```shell
-git clone https://github.com/ArtemRivnyi/arch.pc.git
-cd arch.pc
+git clone https://github.com/ArtemRivnyi/java-algorithms-practice.git
+cd java-algorithms-practice
 ```
 
 ### 2️⃣ Build the Project
@@ -96,59 +114,77 @@ mvn exec:java -Dexec.mainClass="Node"
 mvn exec:java -Dexec.mainClass="Main"
 ```
 
-## 🔬 Lab Details
+---
 
-### Lab01Task: List Performance Comparison
+## 🔬 Lab Details & Real-World Applications
 
-This lab compares the performance of `ArrayList` and `LinkedList` in Java for various operations such as filling, random access, sequential access, and insertions at the beginning, end, and middle of the list. It demonstrates the trade-offs between these two common list implementations.
+Each lab explores a specific concept, providing practical implementations, performance comparisons, and a link to a **real-world scenario** where the concept is applied.
 
-**Key Files:**
+### Lab 1: List Performance Comparison (`ArrayList` vs `LinkedList`)
 
-*   `ListPerformanceComparison.java`: Contains the main logic for comparing `ArrayList` and `LinkedList` performance.
+**Concept:** Comparing the time complexity of sequential access, random access, and insertion operations between array-backed (`ArrayList`) and node-based (`LinkedList`) list implementations.
 
-### Lab02Sorting: Sorting Algorithms Performance Comparison
+**Real-World Application:** **Optimizing Caching and Logging Systems.**
+- **`ArrayList`** is preferred for read-heavy operations, such as accessing configuration parameters or cached data by index.
+- **`LinkedList`** is more suitable for systems with frequent additions/removals at the ends, like implementing a high-throughput log queue or a simple Least Recently Used (LRU) cache where old entries are quickly removed from the head.
 
-This module implements and compares the performance of several sorting algorithms, including Bubble Sort, Merge Sort, Quick Sort, and Shell Sort. It provides a framework to generate arrays of different sizes and measure the execution time of each sorting method.
+**Illustrative Performance Benchmarks (Time in milliseconds for 100,000 elements)**
 
-**Key Files:**
+| Operation | `ArrayList` (ms) | `LinkedList` (ms) | **Conclusion** |
+| :--- | :--- | :--- | :--- |
+| Sequential Access | 0.5 | 1.2 | `ArrayList` is faster due to contiguous memory. |
+| Random Access (get(i)) | 0.001 | 15.0 | `ArrayList` is O(1), `LinkedList` is O(n). |
+| Insert at End | 0.002 | 0.003 | Both are fast (amortized O(1)). |
+| Insert at Start | 0.005 | 0.001 | `LinkedList` is O(1), `ArrayList` is O(n) due to shifting. |
 
-*   `ArrayGenerator.java`: Utility to generate arrays for sorting.
-*   `BubbleSorter.java`, `MergeSorter.java`, `QuickSorter.java`, `ShellSorter.java`: Implementations of various sorting algorithms.
-*   `Sorter.java`: Interface for sorting algorithms.
-*   `SorterFactory.java`: Factory to get `Sorter` implementations.
-*   `SortingPerformance.java`: Main class for running sorting performance tests.
-*   `SortingType.java`: Enum for different sorting types.
+***Note:** The values in this table are illustrative and represent expected performance characteristics. Actual runtimes depend on the execution environment.*
 
-### Lab03Recursion: Recursion and Iteration Examples
+### Lab 2: Sorting Algorithms Performance Comparison
 
-This lab explores the concepts of recursion and iteration through various examples, including factorial calculation, Fibonacci sequence generation, and sum of digits calculation. It compares recursive and iterative approaches for these problems.
+**Concept:** Implementing and comparing the time complexity and stability of various sorting algorithms (Bubble Sort, Merge Sort, Quick Sort, Shell Sort).
 
-**Key Files:**
+**Real-World Application:** **Efficient Log Processing and Report Generation.**
+- **Quick Sort** (or its variants) is often used in standard library implementations for its excellent average-case performance, crucial for quickly sorting large datasets like server logs before analysis.
+- **Merge Sort** is used when stability is required (e.g., sorting a list of transactions by time, then by amount, without disturbing the time order).
 
-*   `FibonacciCalculator.java`: Calculates Fibonacci numbers using both recursive and iterative methods.
-*   `fCalc.java`: Calculates factorials using both recursive and iterative methods.
-*   `Resolvesumm.java`: Calculates the sum of digits of a number.
-*   `SumCalculator.java`: Calculates the sum of two numbers (simple example).
-*   `Main.java`: Entry point to demonstrate the functionality of the recursive and iterative examples.
+**Illustrative Performance Benchmarks (Time in milliseconds for 50,000 elements)**
 
-### Lab04BST: Binary Search Tree Implementation
+| Algorithm | Time (ms) - Best Case (Sorted) | Time (ms) - Average Case (Random) | Time (ms) - Worst Case (Reversed) | **Complexity** |
+| :--- | :--- | :--- | :--- | :--- |
+| Bubble Sort | 150 | 12,000 | 15,000 | O(n²) |
+| Shell Sort | 5 | 150 | 200 | O(n log² n) to O(n¹.⁵) |
+| Merge Sort | 10 | 25 | 30 | O(n log n) |
+| Quick Sort | 5 | 15 | 10,000 | O(n log n) (Avg), O(n²) (Worst) |
 
-This module provides a basic implementation of a Binary Search Tree (BST). It includes functionalities for inserting, deleting, and finding nodes within the tree. The `Node` class represents the structure of the BST.
+***Note:** The values in this table are illustrative and represent expected performance characteristics. Actual runtimes depend on the execution environment.*
 
-**Key Files:**
+### Lab 3: Recursion and Iteration Examples
 
-*   `Node.java`: Implements the Node structure and core BST operations (insert, delete, find, getNodeCount).
-*   `NodeTest.java`: JUnit tests for the `Node` class.
+**Concept:** Demonstrating the use of recursion and iteration for common problems (Factorial, Fibonacci) and comparing their execution overhead and memory usage.
 
-### Lab05: Data Validation and Manipulation
+**Real-World Application:** **Configuration Parsing and Tree Traversal.**
+- **Recursion** is the natural choice for traversing hierarchical data structures like XML/JSON configuration files, file system directories, or network topology maps.
+- **Iteration** is preferred for simple, linear tasks (like processing a list of users) to avoid the risk of **Stack Overflow Errors** that can occur with deep recursion in production environments.
 
-This lab focuses on data validation and manipulation, specifically demonstrating phone number validation using regular expressions. It includes classes for validation, deletion, and replacement operations.
+### Lab 4: Binary Search Tree (BST) Implementation
 
-**Key Files:**
+**Concept:** Implementing a fundamental self-balancing data structure that allows for efficient insertion, deletion, and search operations (average O(log n)).
 
-*   `Validation.java`: Contains logic for validating phone numbers using a regex pattern.
-*   `Deleter.java`, `Replacement.java`: (Likely contain logic for deletion and replacement operations, though specific functionality would require further inspection).
-*   `DeleterTest.java`, `ReplacementTest.java`, `ValidationTest.java`: JUnit tests for the respective utility classes.
+**Real-World Application:** **Database Indexing and Network Routing Tables.**
+- The principles of a BST are the foundation for most **database indexing** mechanisms (like B-trees), which allow for near-instantaneous data retrieval.
+- In networking, similar tree structures are used to build **routing tables** that quickly determine the optimal path for data packets.
+
+### Lab 5: Data Validation and Manipulation
+
+**Concept:** Practical application of regular expressions (regex) for data validation (e.g., phone numbers) and text manipulation (deletion, replacement).
+
+**Real-World Application:** **Log File Analysis and Security Filtering.**
+- **Technical Support** and **DevOps** teams heavily rely on regex for:
+    1.  **Parsing Logs:** Extracting specific error codes, timestamps, or user IDs from unstructured log lines.
+    2.  **Input Validation:** Ensuring configuration files or API payloads adhere to a strict format before processing.
+    3.  **Security:** Masking sensitive data (like credit card numbers or PII) in logs before storage.
+
+---
 
 ## 🤝 Contributing
 
