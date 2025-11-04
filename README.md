@@ -4,6 +4,7 @@
 [![Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
 [![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white)](https://junit.org/junit5/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Last Commit](https://img.shields.io/github/last-commit/ArtemRivnyi/java-algorithms-practice?label=Last%20Update&style=flat-square )](https://github.com/ArtemRivnyi/java-algorithms-practice/commits/master )
 
 This repository is a collection of laboratory assignments focused on fundamental algorithms and data structures, implemented in Java. It serves as a practical demonstration of core computer science principles, with a strong emphasis on **performance analysis** and **efficient resource management**.
 
