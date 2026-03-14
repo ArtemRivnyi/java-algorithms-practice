@@ -1,4 +1,6 @@
-# java-algorithms-practice: Algorithms and Data Structures Labs
+# [ARCHIVED] java-algorithms-practice: Algorithms and Data Structures Labs
+
+> **Note:** This repository is archived and no longer actively maintained.
 
 ![Java](https://img.shields.io/badge/Language-Java-007396?style=flat-square&logo=openjdk&logoColor=white )
 ![Apache Maven](https://img.shields.io/badge/Build%20Tool-Apache%20Maven-C71A36?style=flat-square&logo=apache-maven&logoColor=white )
